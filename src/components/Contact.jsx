@@ -9,6 +9,7 @@ import {
   slideInLeft,
   slideInRight,
 } from "../utils/animations";
+import { useTheme } from "../context/ThemeContext";
 
 // EmailJS Configuration
 // To set up EmailJS:
@@ -21,6 +22,7 @@ const EMAILJS_TEMPLATE_ID = "template_ikiqq9h"; // e.g., "template_xxxxxx"
 const EMAILJS_PUBLIC_KEY = "5mUWZ4rLMvhb2sTya"; // e.g., "xxxxxxxxxxxxxx"
 
 const Contact = () => {
+  const { isDark } = useTheme();
   const formRef = useRef();
   const [formState, setFormState] = useState({
     name: "",
@@ -101,9 +103,15 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 md:py-25 relative overflow-hidden bg-[#0d0d12]"
+      className={`py-20 md:py-25 relative overflow-hidden ${
+        isDark ? "bg-[#0d0d12]" : "bg-gray-50"
+      }`}
     >
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[150px]" />
+      <div
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-[150px] ${
+          isDark ? "bg-indigo-600/10" : "bg-indigo-200/50"
+        }`}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -116,10 +124,18 @@ const Contact = () => {
           <span className="text-indigo-400 font-medium text-sm uppercase tracking-widest">
             Contact
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          <h2
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold mt-4 font-display ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
             Let's work together
           </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
+          <p
+            className={`mt-4 max-w-2xl mx-auto ${
+              isDark ? "text-slate-400" : "text-gray-600"
+            }`}
+          >
             Have a project in mind? I'd love to hear about it. Send me a message
             and let's create something amazing.
           </p>
@@ -132,7 +148,13 @@ const Contact = () => {
             viewport={{ once: true, margin: "-100px" }}
             variants={slideInLeft}
           >
-            <h3 className="text-2xl font-bold mb-8">Get in touch</h3>
+            <h3
+              className={`text-2xl font-bold mb-8 ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Get in touch
+            </h3>
 
             <div className="space-y-6 mb-10">
               {contactInfo.map((item, index) => (
@@ -142,22 +164,50 @@ const Contact = () => {
                   className="flex items-center gap-4 group"
                   whileHover={{ x: 5 }}
                 >
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/5 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all">
+                  <div
+                    className={`p-4 rounded-xl border transition-all ${
+                      isDark
+                        ? "bg-white/5 border-white/5 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10"
+                        : "bg-gray-100 border-gray-200 group-hover:border-indigo-500/50 group-hover:bg-indigo-50"
+                    }`}
+                  >
                     <item.icon className="w-6 h-6 text-indigo-400" />
                   </div>
                   <div>
-                    <p className="text-sm text-slate-500">{item.label}</p>
-                    <p className="text-white font-medium">{item.value}</p>
+                    <p
+                      className={`text-sm ${
+                        isDark ? "text-slate-500" : "text-gray-500"
+                      }`}
+                    >
+                      {item.label}
+                    </p>
+                    <p
+                      className={`font-medium ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {item.value}
+                    </p>
                   </div>
                 </motion.a>
               ))}
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-white/5">
-              <p className="text-slate-300 italic">
-                "📩 I’m open to opportunities in MERN stack development,
+            <div
+              className={`p-6 rounded-2xl border ${
+                isDark
+                  ? "bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-white/5"
+                  : "bg-gradient-to-br from-indigo-50 to-purple-50 border-gray-200"
+              }`}
+            >
+              <p
+                className={`italic ${
+                  isDark ? "text-slate-300" : "text-gray-700"
+                }`}
+              >
+                "📩 I'm open to opportunities in MERN stack development,
                 frontend engineering, and full-stack roles where I can
-                contribute to impactful projects. Let’s connect and explore how
+                contribute to impactful projects. Let's connect and explore how
                 we can work together."
               </p>
             </div>
@@ -169,16 +219,26 @@ const Contact = () => {
             viewport={{ once: true, margin: "-100px" }}
             variants={slideInRight}
           >
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#12121a] border border-white/5">
+            <div
+              className={`p-6 sm:p-8 rounded-2xl border ${
+                isDark
+                  ? "bg-[#12121a] border-white/5"
+                  : "bg-white border-gray-200 shadow-lg"
+              }`}
+            >
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-12">
                   <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
                     <HiCheck className="w-8 h-8 text-green-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">
+                  <h4
+                    className={`text-xl font-bold mb-2 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     Message Sent!
                   </h4>
-                  <p className="text-slate-400 text-center">
+                  <p className={isDark ? "text-slate-400" : "text-gray-600"}>
                     Thanks for reaching out. I'll get back to you soon.
                   </p>
                 </div>
@@ -194,15 +254,23 @@ const Contact = () => {
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all peer"
+                      className={`w-full px-4 py-4 border rounded-xl placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all peer ${
+                        isDark
+                          ? "bg-white/5 border-white/10 text-white"
+                          : "bg-gray-50 border-gray-200 text-gray-900"
+                      }`}
                       placeholder="Your Name"
                     />
                     <label
                       htmlFor="name"
                       className={`absolute left-4 transition-all pointer-events-none ${
                         formState.name || focusedField === "name"
-                          ? "-top-2.5 text-xs text-indigo-400 bg-[#12121a] px-1"
-                          : "top-4 text-slate-500"
+                          ? `-top-2.5 text-xs text-indigo-400 px-1 ${
+                              isDark ? "bg-[#12121a]" : "bg-white"
+                            }`
+                          : `top-4 ${
+                              isDark ? "text-slate-500" : "text-gray-500"
+                            }`
                       }`}
                     >
                       Your Name
@@ -219,15 +287,23 @@ const Contact = () => {
                       onFocus={() => setFocusedField("email")}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all peer"
+                      className={`w-full px-4 py-4 border rounded-xl placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all peer ${
+                        isDark
+                          ? "bg-white/5 border-white/10 text-white"
+                          : "bg-gray-50 border-gray-200 text-gray-900"
+                      }`}
                       placeholder="Email Address"
                     />
                     <label
                       htmlFor="email"
                       className={`absolute left-4 transition-all pointer-events-none ${
                         formState.email || focusedField === "email"
-                          ? "-top-2.5 text-xs text-indigo-400 bg-[#12121a] px-1"
-                          : "top-4 text-slate-500"
+                          ? `-top-2.5 text-xs text-indigo-400 px-1 ${
+                              isDark ? "bg-[#12121a]" : "bg-white"
+                            }`
+                          : `top-4 ${
+                              isDark ? "text-slate-500" : "text-gray-500"
+                            }`
                       }`}
                     >
                       Email Address
@@ -244,15 +320,23 @@ const Contact = () => {
                       onBlur={() => setFocusedField(null)}
                       required
                       rows={5}
-                      className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all resize-none peer"
+                      className={`w-full px-4 py-4 border rounded-xl placeholder-transparent focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all resize-none peer ${
+                        isDark
+                          ? "bg-white/5 border-white/10 text-white"
+                          : "bg-gray-50 border-gray-200 text-gray-900"
+                      }`}
                       placeholder="Your Message"
                     />
                     <label
                       htmlFor="message"
                       className={`absolute left-4 transition-all pointer-events-none ${
                         formState.message || focusedField === "message"
-                          ? "-top-2.5 text-xs text-indigo-400 bg-[#12121a] px-1"
-                          : "top-4 text-slate-500"
+                          ? `-top-2.5 text-xs text-indigo-400 px-1 ${
+                              isDark ? "bg-[#12121a]" : "bg-white"
+                            }`
+                          : `top-4 ${
+                              isDark ? "text-slate-500" : "text-gray-500"
+                            }`
                       }`}
                     >
                       Your Message

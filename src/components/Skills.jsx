@@ -1,15 +1,26 @@
 import { motion } from "framer-motion";
 import { skills } from "../data/portfolio";
 import { fadeInUp } from "../utils/animations";
-
+import { useTheme } from "../context/ThemeContext";
 
 const Skills = () => {
+  const { isDark } = useTheme();
+
   return (
-    <section id="skills" className="py-20 md:py-25 relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />
+    <section
+      id="skills"
+      className={`py-20 md:py-25 relative overflow-hidden ${
+        isDark ? "" : "bg-white"
+      }`}
+    >
+      <div
+        className={`absolute bottom-0 right-0 w-96 h-96 rounded-full blur-[120px] ${
+          isDark ? "bg-purple-600/10" : "bg-purple-200/50"
+        }`}
+      />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-         <motion.div
+        <motion.div
           className="text-center mb-10"
           initial="hidden"
           whileInView="visible"
@@ -19,10 +30,18 @@ const Skills = () => {
           <span className="text-indigo-400 font-medium text-sm uppercase tracking-widest">
             My Skills
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          <h2
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold mt-4 font-display ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
             Technologies I work with
           </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
+          <p
+            className={`mt-4 max-w-2xl mx-auto ${
+              isDark ? "text-slate-400" : "text-gray-600"
+            }`}
+          >
             A collection of technologies and tools I've mastered over the years
           </p>
         </motion.div>
@@ -35,7 +54,11 @@ const Skills = () => {
               transition={{ duration: 0.8, delay: sIdx * 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-300">
+              <h3
+                className={`text-2xl md:text-3xl font-bold text-center mb-8 ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
                 {category.title}
               </h3>
               <div className={`grid ${category.grid} gap-6`}>
@@ -51,7 +74,13 @@ const Skills = () => {
                       whileHover={{ y: -8, scale: 1.05 }}
                       className="relative group"
                     >
-                      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 text-center h-full">
+                      <div
+                        className={`backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 text-center h-full ${
+                          isDark
+                            ? "bg-white/5 border-white/10 hover:border-white/20"
+                            : "bg-gray-50 border-gray-200 hover:border-gray-300 shadow-sm"
+                        }`}
+                      >
                         <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                           <div
                             className="w-10 h-10 mx-auto flex items-center justify-center"
@@ -60,7 +89,11 @@ const Skills = () => {
                             <IconComponent size={40} />
                           </div>
                         </div>
-                        <h4 className="text-lg font-semibold text-white">
+                        <h4
+                          className={`text-lg font-semibold ${
+                            isDark ? "text-white" : "text-gray-900"
+                          }`}
+                        >
                           {skill.name}
                         </h4>
                       </div>
@@ -78,6 +111,65 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex gap-8"
+              animate={{
+                x: [0, -1000],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              }}
+            >
+              {[
+                ...Object.values(skills).flatMap((cat) => cat.items),
+                ...Object.values(skills).flatMap((cat) => cat.items),
+              ].map((skill, idx) => {
+                const IconComponent = skill.icon;
+                return (
+                  <div
+                    key={`slider-${idx}`}
+                    className="flex-shrink-0 flex flex-col items-center gap-2"
+                  >
+                    <div
+                      className={`backdrop-blur-sm rounded-xl p-4 border ${
+                        isDark
+                          ? "bg-white/5 border-white/10"
+                          : "bg-gray-50 border-gray-200"
+                      }`}
+                    >
+                      <div
+                        className="w-12 h-12 flex items-center justify-center"
+                        style={{ color: skill.color }}
+                      >
+                        <IconComponent size={48} />
+                      </div>
+                    </div>
+                    <p
+                      className={`text-sm font-medium text-center whitespace-nowrap ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {skill.name}
+                    </p>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,12 +2,22 @@
 
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
   --color-dark-900: #0a0a0f;
   --color-dark-800: #12121a;
   --color-dark-700: #1a1a24;
   --color-dark-600: #23232f;
   --color-dark-500: #2d2d3a;
+
+  --color-primary-600: #2563eb;
+  --color-primary-500: #22c55e;
+  --color-primary-400: #4ade80;
+
+  --color-secondary-600: #16a34a;
+  --color-secondary-500: #06b6d4;
+  --color-secondary-400: #22d3ee;
 
   --color-accent-500: #6366f1;
   --color-accent-400: #818cf8;
@@ -21,11 +31,22 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+/* Dark mode (default) */
+html.dark body {
   background-color: var(--color-dark-900);
   color: #f8fafc;
+}
+
+/* Light mode */
+html.light body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+body {
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -33,19 +54,38 @@ body {
   color: white;
 }
 
-::-webkit-scrollbar {
+/* Dark mode scrollbar */
+html.dark ::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: var(--color-dark-800);
 }
 
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: var(--color-dark-500);
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html.dark ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent-500);
+}
+
+/* Light mode scrollbar */
+html.light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
 }
