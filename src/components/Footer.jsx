@@ -1,7 +1,62 @@
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaHeart, FaInstagram } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaHeart,
+  FaInstagram,
+  FaArrowUp,
+} from "react-icons/fa";
 import { personalInfo, navLinks } from "../data/portfolio";
 import { useTheme } from "../context/ThemeContext";
+
+// Back to Top Button Component (Fixed position)
+const BackToTopButton = ({ isDark }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          onClick={scrollToTop}
+          className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-colors ${
+            isDark
+              ? "bg-indigo-600 text-white hover:bg-indigo-700"
+              : "bg-indigo-600 text-white hover:bg-indigo-700"
+          }`}
+          initial={{ opacity: 0, scale: 0, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Back to top"
+        >
+          <FaArrowUp size={20}  />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const Footer = () => {
   const { isDark } = useTheme();
@@ -115,6 +170,9 @@ const Footer = () => {
           </p>
         </motion.div>
       </div>
+
+      {/* Fixed Back to Top Button */}
+      <BackToTopButton isDark={isDark} />
     </footer>
   );
 };
