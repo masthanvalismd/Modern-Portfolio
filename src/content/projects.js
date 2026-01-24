@@ -1,75 +1,111 @@
-// Projects Data
+// Projects Data - Frontend Projects
+import ShopKartImage from "../assets/ShopKart.png";
+import MovieFlixImage from "../assets/MovieFlix.png";
+import TicTacToeImage from "../assets/TicTacToe.png";
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce solution with real-time inventory, payment processing, and admin dashboard. Built for scalability and performance.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
+    title: "ShopKart",
+    shortDescription:
+      "A full-stack e-commerce platform with product catalog, shopping cart, user authentication, admin dashboard, and order management system.",
+    longDescription:
+      "ShopKart is a modern, full-stack e-commerce web application built with React 19 and Redux Toolkit that delivers a comprehensive online shopping experience. The platform features an intuitive product catalog with 100+ products, advanced search and filtering capabilities, detailed product pages with image galleries, and a dynamic shopping cart with real-time price calculations and local storage persistence.\n\nKey features include user authentication with session persistence, complete order management with tracking, multi-step checkout process, and a fully-featured admin panel with dashboard analytics, product CRUD operations, inventory control, and order status management. The UI is designed with Tailwind CSS v4, featuring responsive mobile-first design, smooth animations, loading states, and comprehensive error handling.\n\nImplemented state management using Redux Toolkit with 6 slices (cart, auth, filter, orders, products, categories), custom React hooks for reusable logic, integrated with Express.js REST API backend, and optimized performance with debounced search, memoized selectors, and pagination. The modular component architecture ensures maintainability and scalability.",
+    image: ShopKartImage,
+    techStack: [
+      "React 19",
+      "Redux Toolkit",
+      "React Router v7",
+      "Tailwind CSS v4",
+      "Vite 7",
+      "Express.js",
+      "Node.js",
+      "REST API",
+    ],
+    features: [
+      "User Authentication & Session Persistence",
+      "Shopping Cart with Local Storage",
+      "Advanced Search & Filtering",
+      "Product Sorting & Pagination",
+      "Order Management & Tracking",
+      "Admin Dashboard with Analytics",
+      "Product CRUD Operations",
+      "Inventory Management",
+      "Responsive Mobile-First Design",
+      "Custom React Hooks",
+    ],
+    liveUrl: "https://shop-kart-smd.vercel.app/",
+    codeUrl: "https://github.com/masthanvalismd/ShopKart",
     featured: true,
+    year: "2025",
+    status: "completed",
+    role: "Full Stack Developer",
   },
   {
     id: 2,
-    title: "AI Task Manager",
-    description:
-      "Smart task management app with AI-powered prioritization and natural language processing for task creation.",
-    image:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80",
-    tags: ["Next.js", "OpenAI", "PostgreSQL", "Tailwind"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
+    title: "Movie-Flix",
+    shortDescription:
+      "A Netflix-inspired movie browsing application with dark/light themes, watchlist functionality, and responsive Material UI design.",
+    longDescription:
+      "Movie-Flix is a full-stack movie browsing application built with the MERN stack, featuring a sleek Netflix-style interface. The app presents movies in an engaging layout with hero sections, horizontal scrolling carousels, and smooth skeleton loading states.\n\nKey features include advanced search and filtering by genre/rating, a persistent watchlist using localStorage, recently viewed history tracking, and full CRUD operations for movie management. The UI supports dark/light theme toggling with user preference persistence.\n\nImplemented code splitting with React lazy loading for optimal performance, utilized Context API for global state management, and built with Formik + Yup for robust form validation. The responsive design works seamlessly across mobile, tablet, and desktop devices.",
+    image: MovieFlixImage,
+    techStack: [
+      "React 18",
+      "React Router v6",
+      "Material UI (MUI)",
+      "Formik",
+      "Yup",
+      "Context API",
+      "Node.js",
+      "Express.js",
+      "CORS",
+    ],
+    features: [
+      "Dark/Light Theme",
+      "Watchlist",
+      "Search & Filters",
+      "Lazy Loading",
+      "Skeleton Loaders",
+      "CRUD Operations",
+      "Responsive Design",
+    ],
+    liveUrl: "https://movie-flix-smd-app.vercel.app/",
+    codeUrl: "https://github.com/masthanvalismd/MovieFlix",
     featured: true,
+    year: "2024",
+    status: "completed",
+    role: "Full Stack Developer",
   },
   {
     id: 3,
-    title: "Real-time Analytics Dashboard",
-    description:
-      "Interactive dashboard for visualizing business metrics with real-time data updates and customizable widgets.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["React", "D3.js", "WebSocket", "Redis"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Social Media Scheduler",
-    description:
-      "Multi-platform social media scheduling tool with analytics, team collaboration, and content calendar.",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    tags: ["Vue.js", "Python", "FastAPI", "AWS"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Crypto Portfolio Tracker",
-    description:
-      "Cryptocurrency portfolio management with real-time prices, profit/loss tracking, and market analysis tools.",
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-    tags: ["React", "GraphQL", "CoinGecko API", "Chart.js"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
+    title: "Tic Tac Toe",
+    shortDescription:
+      "A classic Tic Tac Toe game with modern UI, score tracking, confetti celebrations, and smooth animations.",
+    longDescription:
+      "A beautifully designed Tic Tac Toe game built with React 18 that brings the classic game to life with modern web technologies. The game features a sleek, minimalist dark-themed interface with gradient accents and smooth CSS animations for moves, wins, and game resets.\n\nThe application includes Player vs Player local multiplayer mode with real-time turn indicators and move tracking. Features include persistent score tracking for both players and draws, winning line highlighting, confetti celebration effects on victory, and accessible keyboard navigation.\n\nBuilt with a focus on clean component architecture using React hooks (useState) for state management, Material UI for polished buttons, and react-confetti for celebration effects. The responsive design with CSS clamp() functions works perfectly on both desktop and mobile devices.",
+    image: TicTacToeImage,
+    techStack: [
+      "React 18",
+      "JavaScript (ES6+)",
+      "CSS3 Animations",
+      "Material UI",
+      "React Hooks",
+      "react-confetti",
+    ],
+    features: [
+      "Player vs Player",
+      "Score Tracking",
+      "Win Detection & Highlighting",
+      "Confetti Celebrations",
+      "Smooth Animations",
+      "Responsive Design",
+      "Keyboard Accessible",
+      "Moves Counter",
+    ],
+    liveUrl: "https://tic-tac-toe-smd.vercel.app/",
+    codeUrl: "https://github.com/masthanvalismd/Tic-Tac-Toe",
     featured: true,
-  },
-  {
-    id: 6,
-    title: "DevOps Monitoring Tool",
-    description:
-      "Infrastructure monitoring solution with alerting, log aggregation, and performance metrics visualization.",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-    tags: ["Go", "Docker", "Kubernetes", "Prometheus"],
-    liveUrl: "https://example.com",
-    codeUrl: "https://github.com",
-    featured: false,
+    year: "2024",
+    status: "completed",
+    role: "Frontend Developer",
   },
 ];
