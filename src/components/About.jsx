@@ -13,7 +13,7 @@ import {
   FaAward,
 } from "react-icons/fa";
 import { personalInfo, careerJourney, skillStrengths } from "../data/portfolio";
-import resume from "../assets/Mohammed_Masthan_Vali.pdf";
+import resume from "../assets/Mohammed_Masthan_Vali_Resume.pdf";
 import {
   fadeInUp,
   staggerContainer,
