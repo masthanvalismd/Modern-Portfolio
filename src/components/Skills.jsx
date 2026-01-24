@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { skills } from "../data/portfolio";
+import { skills, additionalSkills } from "../content/skills";
 import { fadeInUp } from "../utils/animations";
 import { useTheme } from "../context/ThemeContext";
 
@@ -111,6 +111,42 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
+        {/* Additional Skills */}
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h3
+            className={`text-2xl md:text-3xl font-bold text-center mb-8 ${
+              isDark ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            Additional Skills
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {additionalSkills.map((skill, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all cursor-default ${
+                  isDark
+                    ? "bg-indigo-500/10 text-indigo-300 border-indigo-500/30 hover:bg-indigo-500/20"
+                    : "bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100"
+                }`}
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.div
           className="mt-20"
           initial={{ opacity: 0 }}
