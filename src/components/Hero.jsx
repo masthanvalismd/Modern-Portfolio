@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { HiArrowDown, HiLocationMarker, HiExternalLink } from "react-icons/hi";
 import { FiDownload, FiGithub, FiLinkedin } from "react-icons/fi";
 import { personalInfo } from "../data/portfolio";
-import resume from "../assets/Mohammed_Masthan_Vali.pdf";
+import resume from "../assets/Mohammed_Masthan_Vali_Resume.pdf";
 import { useTheme } from "../context/ThemeContext";
 import smd from "../assets/smd.jpg";
 import { useRef, useState } from "react";
