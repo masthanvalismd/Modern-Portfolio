@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiExternalLink, HiCode, HiX } from "react-icons/hi";
-import { projects } from "../data/portfolio";
+import { HiExternalLink, HiX } from "react-icons/hi";
+import { FaGithub } from "react-icons/fa";
+import { projects } from "../content/projects";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 import { useTheme } from "../context/ThemeContext";
 
@@ -18,7 +19,7 @@ const ProjectModal = ({ project, isOpen, onClose, isDark }) => {
         onClick={onClose}
       >
         <motion.div
-          className={`relative w-full max-w-2xl rounded-2xl overflow-hidden ${
+          className={`relative w-full max-w-2xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col ${
             isDark ? "bg-[#12121a] border border-white/10" : "bg-white"
           }`}
           initial={{ scale: 0.9, opacity: 0 }}
@@ -26,82 +27,159 @@ const ProjectModal = ({ project, isOpen, onClose, isDark }) => {
           exit={{ scale: 0.9, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            onClick={onClose}
-            className={`absolute top-4 right-4 p-2 rounded-full z-10 ${
-              isDark
-                ? "bg-white/10 text-white hover:bg-white/20"
-                : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+          {/* Header with title and close button */}
+          <div
+            className={`flex items-center justify-between p-4 border-b flex-shrink-0 ${
+              isDark ? "border-white/10" : "border-gray-200"
             }`}
           >
-            <HiX size={20} />
-          </button>
-
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-64 object-cover"
-          />
-
-          <div className="p-6">
-            <h3
-              className={`text-2xl font-bold mb-3 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              {project.title}
-            </h3>
-
-            <p
-              className={`mb-6 ${
-                isDark ? "text-slate-400" : "text-gray-600"
-              }`}
-            >
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag, i) => (
+            <div className="flex items-center gap-3">
+              <h3
+                className={`text-xl font-bold ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                {project.title}
+              </h3>
+              {project.status && (
                 <span
-                  key={i}
-                  className={`px-3 py-1 rounded-full text-xs font-medium border ${
-                    isDark
-                      ? "bg-white/5 text-slate-300 border-white/5"
-                      : "bg-gray-100 text-gray-700 border-gray-200"
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    project.status === "completed"
+                      ? "bg-green-500/20 text-green-400"
+                      : "bg-amber-500/20 text-amber-400"
                   }`}
                 >
-                  {tag}
+                  {project.status === "completed" ? "Completed" : "In Progress"}
                 </span>
-              ))}
+              )}
             </div>
+            <button
+              onClick={onClose}
+              className={`p-2 rounded-full ${
+                isDark
+                  ? "bg-white/10 text-white hover:bg-white/20"
+                  : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+              }`}
+            >
+              <HiX size={20} />
+            </button>
+          </div>
 
-            <div className="flex gap-3">
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <HiExternalLink size={20} />
-                Live Site
-              </motion.a>
-              <motion.a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-colors ${
-                  isDark
-                    ? "bg-white/10 text-white hover:bg-white/20"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+          {/* Scrollable content */}
+          <div className="overflow-y-auto flex-1">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-72 object-cover"
+            />
+
+            <div className="p-6">
+              {(project.role || project.year) && (
+                <div
+                  className={`flex items-center gap-4 mb-4 text-sm ${
+                    isDark ? "text-slate-400" : "text-gray-500"
+                  }`}
+                >
+                  {project.role && <span>{project.role}</span>}
+                  {project.year && <span>• {project.year}</span>}
+                </div>
+              )}
+
+              <div
+                className={`mb-6 whitespace-pre-line leading-relaxed ${
+                  isDark ? "text-slate-400" : "text-gray-600"
                 }`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
-                <HiCode size={20} />
-                View Code
-              </motion.a>
+                {project.longDescription}
+              </div>
+
+              {/* Tech Stack */}
+              <div className="mb-6">
+                <h4
+                  className={`text-sm font-semibold uppercase tracking-wider mb-3 ${
+                    isDark ? "text-slate-300" : "text-gray-700"
+                  }`}
+                >
+                  Tech Stack
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
+                        isDark
+                          ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
+                          : "bg-indigo-100 text-indigo-700 border border-indigo-200"
+                      }`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Features */}
+              {project.features && (
+                <div className="mb-6">
+                  <h4
+                    className={`text-sm font-semibold uppercase tracking-wider mb-3 ${
+                      isDark ? "text-slate-300" : "text-gray-700"
+                    }`}
+                  >
+                    Key Features
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.features.map((feature, i) => (
+                      <span
+                        key={i}
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium ${
+                          isDark
+                            ? "bg-white/5 text-slate-300 border border-white/10"
+                            : "bg-gray-100 text-gray-700 border border-gray-200"
+                        }`}
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Horizontal break above buttons */}
+              <div
+                className={`border-t pt-6 ${
+                  isDark ? "border-white/10" : "border-gray-200"
+                }`}
+              >
+                <div className="flex gap-3">
+                  <motion.a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <HiExternalLink size={20} />
+                    Live Site
+                  </motion.a>
+                  <motion.a
+                    href={project.codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-colors ${
+                      isDark
+                        ? "bg-white/10 text-white hover:bg-white/20"
+                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <FaGithub size={20} />
+                    View Code
+                  </motion.a>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -112,6 +190,9 @@ const ProjectModal = ({ project, isOpen, onClose, isDark }) => {
 
 const ProjectCard = ({ project, index, isDark, onClick }) => {
   const [isImageHovered, setIsImageHovered] = useState(false);
+  const maxVisibleTech = 4;
+  const visibleTech = project.techStack.slice(0, maxVisibleTech);
+  const remainingTechCount = project.techStack.length - maxVisibleTech;
 
   return (
     <motion.div
@@ -154,6 +235,37 @@ const ProjectCard = ({ project, index, isDark, onClick }) => {
             }`}
           />
 
+          {/* Hover overlay with icons */}
+          <motion.div
+            className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isImageHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.a
+              href={project.codeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaGithub size={24} />
+            </motion.a>
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <HiExternalLink size={24} />
+            </motion.a>
+          </motion.div>
+
           {project.featured && (
             <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-white">
               Featured
@@ -174,11 +286,11 @@ const ProjectCard = ({ project, index, isDark, onClick }) => {
               isDark ? "text-slate-400" : "text-gray-600"
             }`}
           >
-            {project.description}
+            {project.shortDescription}
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag, i) => (
+            {visibleTech.map((tech, i) => (
               <span
                 key={i}
                 className={`px-3 py-1 rounded-full text-xs font-medium border ${
@@ -187,9 +299,20 @@ const ProjectCard = ({ project, index, isDark, onClick }) => {
                     : "bg-gray-100 text-gray-700 border-gray-200"
                 }`}
               >
-                {tag}
+                {tech}
               </span>
             ))}
+            {remainingTechCount > 0 && (
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-medium border ${
+                  isDark
+                    ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/30"
+                    : "bg-indigo-100 text-indigo-700 border-indigo-200"
+                }`}
+              >
+                +{remainingTechCount}
+              </span>
+            )}
           </div>
         </div>
       </motion.div>
