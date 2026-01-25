@@ -1,0 +1,9 @@
+# robots.txt for Mohammed Masthan Vali Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohammedmasthanvali-dev.vercel.app/sitemap.xml
+
+# Crawl-delay (optional, be kind to servers)
+Crawl-delay: 1
