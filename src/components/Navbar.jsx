@@ -121,7 +121,7 @@ const Navbar = () => {
 
             {/* Right side - Theme Toggle and CTA */}
             <div className="hidden md:flex items-center gap-3">
-              {/* <motion.button
+              <motion.button
                 onClick={toggleTheme}
                 className={`p-2.5 rounded-full transition-colors ${
                   isDark
@@ -137,7 +137,7 @@ const Navbar = () => {
                 ) : (
                   <IoMoonOutline size={22} />
                 )}
-              </motion.button> */}
+              </motion.button>
               <motion.a
                 href="#contact"
                 className="px-5 py-2.5 rounded-full text-sm font-medium bg-[#0ea5e9] text-white hover:bg-[#0284c7] transition-all shadow-lg shadow-sky-500/25"
