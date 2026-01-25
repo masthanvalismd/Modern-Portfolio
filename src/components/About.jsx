@@ -188,7 +188,6 @@ const About = () => {
               ))}
             </motion.div>
 
-
             {/* What I'm Currently Up To */}
             <motion.div
               className={`mt-8 p-5 rounded-xl border ${
@@ -256,20 +255,21 @@ const About = () => {
                 }`}
               />
 
-              <motion.div
-                className="space-y-8"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              <div className="space-y-8">
                 {careerJourney.map((item, index) => {
                   const isLeft = index % 2 === 0;
                   return (
                     <motion.div
                       key={index}
                       className="relative"
-                      variants={fadeInUp}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.15,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                     >
                       {/* Timeline dot with icon - centered */}
                       <div
@@ -328,7 +328,7 @@ const About = () => {
                     </motion.div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
