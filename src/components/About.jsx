@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  HiDownload,
-  HiLocationMarker,
-  HiCode,
-  HiLightningBolt,
-} from "react-icons/hi";
+import { HiLocationMarker, HiCode, HiLightningBolt } from "react-icons/hi";
 import {
   FaLayerGroup,
   FaBriefcase,
@@ -13,7 +8,6 @@ import {
   FaAward,
 } from "react-icons/fa";
 import { personalInfo, careerJourney, skillStrengths } from "../data/portfolio";
-import resume from "../assets/Mohammed_Masthan_Vali_Resume.pdf";
 import {
   fadeInUp,
   staggerContainer,
@@ -49,15 +43,6 @@ const About = () => {
       default:
         return <FaBriefcase size={18} />;
     }
-  };
-
-  const downloadResume = () => {
-    const link = document.createElement("a");
-    link.href = resume;
-    link.download = "Mohammed_Masthan_Vali_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
@@ -118,53 +103,44 @@ const About = () => {
                 }`}
               >
                 Hi, I’m Mohammed Masthan Vali, a Front-End Developer based in
-                Hyderabad, India with 3.7+ years of experience building
+                Hyderabad, India, with 3.9+ years of experience building
                 responsive, intuitive, and performance-driven web applications.
                 I specialize in ReactJS, JavaScript, HTML, CSS, and modern UI
-                frameworks, with a strong focus on clean code, user experience,
-                and scalability.
+                frameworks, with a strong focus on clean code, scalability, and
+                user experience.
               </p>
               <p
                 className={`leading-relaxed ${
                   isDark ? "text-slate-400" : "text-gray-600"
                 }`}
               >
-                For me, great front-end development is all about balance:
-                performance + visuals, simplicity + function, creativity +
-                logic. Over the last few years, I've built applications that
-                improved workflows, enhanced user experience, and even earned
-                recognition like the Infosys Insta Award.
+                For me, great front-end development is about finding the right
+                balance — performance and visuals, simplicity and functionality,
+                creativity and logic. Over the years, I’ve worked on
+                applications that streamlined workflows, improved usability, and
+                delivered real value, including an internal platform that earned
+                the Infosys Insta Award for its impact and quality.
               </p>
               <p
                 className={`leading-relaxed ${
                   isDark ? "text-slate-400" : "text-gray-600"
                 }`}
               >
-                My journey in tech has been driven by curiosity and a constant
-                desire to learn. I believe in writing maintainable code, staying
-                updated with the latest front-end trends, and continuously
-                improving as a developer.
+                I’m driven by curiosity and a constant desire to learn and
+                improve. I enjoy refining component architecture, optimizing UI
+                performance, and staying up to date with evolving front-end
+                practices. My goal is to build reliable, maintainable interfaces
+                that feel intuitive to users and scale well as products grow.
               </p>
             </div>
 
             {/* Location */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-8">
               <HiLocationMarker className="text-indigo-400" size={20} />
               <span className={isDark ? "text-slate-300" : "text-gray-700"}>
                 Based in {personalInfo.location}
               </span>
             </div>
-
-            {/* Download Resume Button */}
-            <motion.button
-              onClick={downloadResume}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0ea5e9] text-white font-medium shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all mb-10"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <HiDownload size={18} />
-              Download Resume
-            </motion.button>
 
             {/* Skill Strengths Cards */}
             <motion.div
@@ -210,6 +186,47 @@ const About = () => {
                   </p>
                 </motion.div>
               ))}
+            </motion.div>
+
+
+            {/* What I'm Currently Up To */}
+            <motion.div
+              className={`mt-8 p-5 rounded-xl border ${
+                isDark
+                  ? "bg-[#12121a] border-white/10"
+                  : "bg-white border-gray-200 shadow-md"
+              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <h4
+                className={`font-semibold mb-3 flex items-center gap-2 ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                What I'm Currently Up To
+              </h4>
+              <ul
+                className={`space-y-2 text-sm ${
+                  isDark ? "text-slate-400" : "text-gray-600"
+                }`}
+              >
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-400 mt-1">→</span>
+                  Building scalable React applications at Infosys
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-400 mt-1">→</span>
+                  Exploring TypeScript and advanced state management
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-400 mt-1">→</span>
+                  Open to exciting frontend opportunities
+                </li>
+              </ul>
             </motion.div>
           </motion.div>
 
