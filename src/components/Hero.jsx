@@ -41,7 +41,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-24 md:pb-16"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -217,7 +217,7 @@ const Hero = () => {
 
           {/* Right Column - Avatar */}
           <motion.div
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 mb-8 lg:mb-0"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -253,7 +253,7 @@ const Hero = () => {
                 </div>
 
                 <motion.div
-                  className={`absolute -bottom-6 -right-6 p-4 rounded-xl border shadow-xl ${
+                  className={`absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 p-3 md:p-4 rounded-xl border shadow-xl ${
                     isDark
                       ? "bg-[#1a1a24] border-white/10"
                       : "bg-white border-gray-200"
