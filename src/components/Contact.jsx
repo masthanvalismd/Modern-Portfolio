@@ -1,14 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMail, HiLocationMarker, HiPhone, HiCheck } from "react-icons/hi";
 import emailjs from "@emailjs/browser";
 import { personalInfo } from "../data/portfolio";
-import {
-  fadeInUp,
-  staggerContainer,
-  slideInLeft,
-  slideInRight,
-} from "../utils/animations";
+import { fadeInUp, slideInLeft, slideInRight } from "../utils/animations";
 import { useTheme } from "../context/ThemeContext";
 
 // EmailJS Configuration
@@ -23,7 +18,6 @@ const EMAILJS_PUBLIC_KEY = "5mUWZ4rLMvhb2sTya"; // e.g., "xxxxxxxxxxxxxx"
 
 const Contact = () => {
   const { isDark } = useTheme();
-  const formRef = useRef();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -53,7 +47,7 @@ const Contact = () => {
           message: formState.message,
           from_name: formState.name,
         },
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
 
       setIsSubmitted(true);
@@ -61,7 +55,7 @@ const Contact = () => {
     } catch (err) {
       console.error("EmailJS Error:", err);
       setError(
-        "Failed to send message. Please try again or email me directly."
+        "Failed to send message. Please try again or email me directly.",
       );
     } finally {
       setIsLoading(false);
@@ -136,8 +130,8 @@ const Contact = () => {
               isDark ? "text-slate-400" : "text-gray-600"
             }`}
           >
-            Have a project in mind? I'd love to hear about it. Send me a message
-            and let's create something amazing.
+            Have a job opportunity or project in mind? I'd love to hear about
+            it. Send me a message and let's create something amazing together.
           </p>
         </motion.div>
 
@@ -205,10 +199,9 @@ const Contact = () => {
                   isDark ? "text-slate-300" : "text-gray-700"
                 }`}
               >
-                "📩 I'm open to opportunities in MERN stack development,
-                frontend engineering, and full-stack roles where I can
-                contribute to impactful projects. Let's connect and explore how
-                we can work together."
+                📩 I'm open to Frontend Development opportunities specializing
+                in React and modern web technologies. Let's connect and build
+                something great together.
               </p>
             </div>
           </motion.div>
