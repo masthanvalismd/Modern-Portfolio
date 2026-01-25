@@ -7,6 +7,7 @@ import Certifications from "./components/Certifications";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import SEO from "./components/SEO";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 function AppContent() {
@@ -18,6 +19,7 @@ function AppContent() {
         isDark ? "bg-[#0a0a0f] text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
+      <SEO />
       <Navbar />
       <main>
         <Hero />
