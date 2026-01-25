@@ -106,9 +106,16 @@ const Experience = () => {
                       >
                         {item.title}
                       </h3>
-                      <p className="text-indigo-400 font-medium">
-                        {item.company}
-                      </p>
+                      <div className="flex items-center mt-1">
+                        <img
+                          src={item.comapanyLogo}
+                          alt={item.company}
+                          className="w-12 h-12 object-contain inline-block mr-2 rounded-md"
+                        />
+                        <p className="text-indigo-400 font-medium">
+                          {item.company}
+                        </p>
+                      </div>
                     </div>
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
