@@ -6,7 +6,7 @@ export const personalInfo = {
     "Passionate about creating beautiful, functional web experiences. \nDriven by detail, design, and refined user interactions.",
   email: "masthanvalismd@gmail.com",
   location: "Hyderabad, India",
-  bio: `Hi, I'm Mohammed Masthan Vali, a Front-End Developer with 3.7+ years of experience building responsive, intuitive, and performance-driven web applications. I specialize in ReactJS, JavaScript, HTML, CSS, and modern UI frameworks, with a strong focus on clean code, user experience, and scalability.`,
+  bio: `Hi, I'm Mohammed Masthan Vali, a Front-End Developer with 3.9+ years of experience building responsive, intuitive, and performance-driven web applications. I specialize in ReactJS, JavaScript, HTML, CSS, and modern UI frameworks, with a strong focus on clean code, user experience, and scalability.`,
   resumeUrl: "../assets/Masthan_Resume.pdf",
   social: {
     github: "https://github.com/masthanvalismd",
