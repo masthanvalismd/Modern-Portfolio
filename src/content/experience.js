@@ -4,6 +4,7 @@ export const experience = [
     year: "Oct 2025 - Present",
     title: "Digital Specialist Engineer",
     company: "Infosys Ltd",
+    comapanyLogo: "https://www.liblogo.com/img-logo/in6145i7cd-infosys-logo-infosys-logo-ai-openchain.png",
     location: "Hyderabad, India",
     type: "Full time",
     description:
@@ -35,6 +36,7 @@ export const experience = [
     year: "Mar 2022 - Sep 2025",
     title: "Systems Engineer",
     company: "Infosys Ltd",
+    comapanyLogo: "https://www.liblogo.com/img-logo/in6145i7cd-infosys-logo-infosys-logo-ai-openchain.png",
     location: "Hyderabad, India",
     type: "Full time",
     description:
