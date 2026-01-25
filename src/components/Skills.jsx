@@ -99,9 +99,13 @@ const Skills = () => {
                       </div>
                       {/* Glow effect */}
                       <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-20 rounded-2xl blur-xl transition-opacity duration-300 -z-10"
+                        className={`absolute inset-0 rounded-2xl blur-xl transition-opacity duration-300 -z-10 ${
+                          isDark
+                            ? "opacity-0 group-hover:opacity-20"
+                            : "opacity-0 group-hover:opacity-40"
+                        }`}
                         style={{
-                          background: `linear-gradient(to right, ${skill.color}40, ${skill.color}60)`,
+                          background: `linear-gradient(to right, ${skill.color}, ${skill.color})`,
                         }}
                       />
                     </motion.div>
