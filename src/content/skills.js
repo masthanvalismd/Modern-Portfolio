@@ -6,6 +6,7 @@ import {
   FaCss3Alt,
   FaGithub,
   FaNpm,
+  FaMicrosoft,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -24,13 +25,14 @@ import { VscVscode, VscCopilot } from "react-icons/vsc";
 export const skills = {
   core: {
     title: "Core Skills",
-    grid: "grid-cols-2 md:grid-cols-3 lg:grid-cols-5",
+    grid: "grid-cols-2 md:grid-cols-3 lg:grid-cols-6",
     items: [
       { name: "ReactJS", icon: FaReact, color: "#61DAFB" },
       { name: "JavaScript (ES6+)", icon: SiJavascript, color: "#F7DF1E" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
       { name: "Redux", icon: SiRedux, color: "#764ABC" },
       { name: "Axios", icon: SiAxios, color: "#5A29E4" },
+      { name: "SPFx", icon: FaMicrosoft, color: "#0078D4" },
     ],
   },
   ui: {

@@ -102,35 +102,21 @@ const About = () => {
                   isDark ? "text-slate-300" : "text-gray-700"
                 }`}
               >
-                Hi, I’m Mohammed Masthan Vali, a Front-End Developer based in
-                Hyderabad, India, with 3.9+ years of experience building
-                responsive, intuitive, and performance-driven web applications.
-                I specialize in ReactJS, JavaScript, HTML, CSS, and modern UI
-                frameworks, with a strong focus on clean code, scalability, and
-                user experience.
+                Hi, I’m Mohammed Masthan Vali, a Front-End React Developer based in Hyderabad, India, with 4.2+ years of experience building scalable, responsive, and high-performance enterprise web applications. I specialize in ReactJS, JavaScript, TypeScript, HTML, CSS, and modern UI frameworks, with a strong focus on clean code, component-based architecture, and exceptional user experiences.
               </p>
               <p
                 className={`leading-relaxed ${
                   isDark ? "text-slate-400" : "text-gray-600"
                 }`}
               >
-                For me, great front-end development is about finding the right
-                balance — performance and visuals, simplicity and functionality,
-                creativity and logic. Over the years, I’ve worked on
-                applications that streamlined workflows, improved usability, and
-                delivered real value, including an internal platform that earned
-                the Infosys Insta Award for its impact and quality.
+                I believe great front-end development is about balancing performance, usability, and maintainability. Over the years, I’ve designed and developed enterprise applications from the ground up, built reusable component libraries, implemented real-time features, and optimized application performance to deliver meaningful business impact. My contributions have been recognized with two Infosys Insta Awards for delivering high-quality, business-critical solutions.
               </p>
               <p
                 className={`leading-relaxed ${
                   isDark ? "text-slate-400" : "text-gray-600"
                 }`}
               >
-                I’m driven by curiosity and a constant desire to learn and
-                improve. I enjoy refining component architecture, optimizing UI
-                performance, and staying up to date with evolving front-end
-                practices. My goal is to build reliable, maintainable interfaces
-                that feel intuitive to users and scale well as products grow.
+                I enjoy solving complex UI challenges, refining application architecture, and continuously exploring modern front-end technologies and best practices. My goal is to build intuitive, reliable, and scalable interfaces that not only provide seamless user experiences but also evolve effortlessly as products grow.
               </p>
             </div>
 
