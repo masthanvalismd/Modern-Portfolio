@@ -6,7 +6,7 @@ import { useEffect } from "react";
  */
 const SEO = ({
   title = "Mohammed Masthan Vali | Frontend Developer | React Developer Portfolio",
-  description = "Mohammed Masthan Vali - Frontend Developer with 3.9+ years of experience in ReactJS, JavaScript, TypeScript. Building responsive, high-performance web applications.",
+  description = "Mohammed Masthan Vali - Frontend Developer with 4.5+ years of experience in ReactJS, JavaScript, TypeScript. Building responsive, high-performance web applications.",
   keywords = "Mohammed Masthan Vali, Masthan Vali, Frontend Developer, React Developer, JavaScript Developer, TypeScript, Web Developer, Hyderabad, India, Portfolio",
   image = "/og-image.png",
   url = "https://mohammedmasthanvali-dev.vercel.app/",
@@ -59,14 +59,14 @@ export const seoData = {
     title:
       "Mohammed Masthan Vali | Frontend Developer | React Developer Portfolio",
     description:
-      "Mohammed Masthan Vali - Frontend Developer with 3.9+ years of experience in ReactJS, JavaScript, TypeScript. Building responsive, high-performance web applications at Infosys.",
+      "Mohammed Masthan Vali - Frontend Developer with 4.5+ years of experience in ReactJS, JavaScript, TypeScript. Building responsive, high-performance web applications at Infosys.",
     keywords:
       "Mohammed Masthan Vali, Masthan Vali, Frontend Developer, React Developer, JavaScript, TypeScript, Web Developer, Hyderabad, Portfolio, Infosys Developer",
   },
   about: {
     title: "About Mohammed Masthan Vali | Frontend Developer",
     description:
-      "Learn about Mohammed Masthan Vali's journey as a Frontend Developer. 3.9+ years of experience building award-winning React applications at Infosys.",
+      "Learn about Mohammed Masthan Vali's journey as a Frontend Developer. 4.5+ years of experience building award-winning React applications at Infosys.",
     keywords:
       "Mohammed Masthan Vali about, Frontend Developer experience, React Developer Hyderabad, Infosys Developer, Web Developer India",
   },
