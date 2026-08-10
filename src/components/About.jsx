@@ -102,7 +102,7 @@ const About = () => {
                   isDark ? "text-slate-300" : "text-gray-700"
                 }`}
               >
-                Hi, I’m Mohammed Masthan Vali, a Front-End React Developer based in Hyderabad, India, with 4.2+ years of experience building scalable, responsive, and high-performance enterprise web applications. I specialize in ReactJS, JavaScript, TypeScript, HTML, CSS, and modern UI frameworks, with a strong focus on clean code, component-based architecture, and exceptional user experiences.
+                Hi, I’m Mohammed Masthan Vali, a Front-End React Developer based in Hyderabad, India, with 4.5+ years of experience building scalable, responsive, and high-performance enterprise web applications. I specialize in ReactJS, JavaScript, TypeScript, HTML, CSS, and modern UI frameworks, with a strong focus on clean code, component-based architecture, and exceptional user experiences.
               </p>
               <p
                 className={`leading-relaxed ${
